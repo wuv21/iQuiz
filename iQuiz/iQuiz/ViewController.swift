@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
+    let subjectsDescriptions =  ["Covers algebra, geometry, etc.",
+                                "Explores the Marvel universe.",
+                                "Topics from biology to astronomy."]
     
     @IBOutlet var subjectsTable: UITableView!
     
@@ -30,13 +33,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reuseIdentifier = "subjectCell"
         
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell?
         if (cell != nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
         }
         
         cell!.textLabel?.text = subjects[indexPath.row]
-        cell!.detailTextLabel?.text = subjects[indexPath.row]
+        cell!.detailTextLabel?.text = subjectsDescriptions[indexPath.row]
         cell!.imageView?.image = UIImage(named: "subject_pic.png")
         
         return cell!
