@@ -13,6 +13,8 @@
 		493ED19A1CDA81620068A064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 493ED1991CDA81620068A064 /* Assets.xcassets */; };
 		493ED19D1CDA81620068A064 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493ED19B1CDA81620068A064 /* LaunchScreen.storyboard */; };
 		493ED1AD1CDAB30C0068A064 /* subject_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 493ED1AC1CDAB30C0068A064 /* subject_pic.png */; };
+		9DD966F41CE12A7900E3D1DE /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD966F31CE12A7900E3D1DE /* QuestionViewController.swift */; };
+		9DD966F61CE1320B00E3D1DE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD966F51CE1320B00E3D1DE /* AppModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		493ED19C1CDA81620068A064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		493ED19E1CDA81620068A064 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		493ED1AC1CDAB30C0068A064 /* subject_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subject_pic.png; sourceTree = "<group>"; };
+		9DD966F31CE12A7900E3D1DE /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		9DD966F51CE1320B00E3D1DE /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,12 @@
 				493ED1AC1CDAB30C0068A064 /* subject_pic.png */,
 				493ED1921CDA81620068A064 /* AppDelegate.swift */,
 				493ED1941CDA81620068A064 /* ViewController.swift */,
+				9DD966F31CE12A7900E3D1DE /* QuestionViewController.swift */,
 				493ED1961CDA81620068A064 /* Main.storyboard */,
 				493ED1991CDA81620068A064 /* Assets.xcassets */,
 				493ED19B1CDA81620068A064 /* LaunchScreen.storyboard */,
 				493ED19E1CDA81620068A064 /* Info.plist */,
+				9DD966F51CE1320B00E3D1DE /* AppModel.swift */,
 			);
 			path = iQuiz;
 			sourceTree = "<group>";
@@ -142,6 +148,8 @@
 			files = (
 				493ED1951CDA81620068A064 /* ViewController.swift in Sources */,
 				493ED1931CDA81620068A064 /* AppDelegate.swift in Sources */,
+				9DD966F41CE12A7900E3D1DE /* QuestionViewController.swift in Sources */,
+				9DD966F61CE1320B00E3D1DE /* AppModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +305,7 @@
 				493ED1A31CDA81620068A064 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
