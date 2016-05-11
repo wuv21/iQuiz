@@ -13,6 +13,7 @@ class QuizContent {
     
     var subjects : [String] = []
     var subjectsDescriptions : [String] = []
+    var questions: [AnyObject] = []
     
     func getData(completionHandler: () -> Void) {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://tednewardsandbox.site44.com/questions.json")!)
@@ -32,13 +33,13 @@ class QuizContent {
                     
                     for c in category {
                         guard let subject = c["title"] as? String,
-                            let desc = c["desc"] as? String else {return}
-//                            let questions = c["questions"] else {return}
+                            let desc = c["desc"] as? String,
+                            let questions = c["questions"] else {return}
                         
                         
                         self.subjects.append(subject)
                         self.subjectsDescriptions.append(desc)
-                        
+                        self.questions.append(questions)
                     }
                     
                     completionHandler()

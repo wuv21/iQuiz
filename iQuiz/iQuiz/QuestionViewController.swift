@@ -30,18 +30,36 @@ class QuestionViewController: UIViewController {
     var subject : String = ""
     var questionNum : Int = 0
     var index : Int = 0;
+    var questionObjects : [AnyObject] = []
+    
+    var parsedAnswers : [[String]] = []
+    var parsedAnswerIndices : [Int] = []
+    var questions : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let rawQuestions = questionObjects as [AnyObject]? else {return}
+        
+        for rawQuestion in rawQuestions {
+            
+            guard let correctAnswerIndex = rawQuestion["answer"] as? String,
+                let answers = rawQuestion["answers"] as? [String],
+                let question = rawQuestion["text"] as? String else {return}
+            
+            parsedAnswers.append(answers);
+            parsedAnswerIndices.append(Int(correctAnswerIndex)!)
+            questions.append(question)
+        }
+        
         navBar.topItem!.title = subject
+        question.text = questions[0]
         
-        let data = ["lorem", "ipsum", "dolor", "test"]
-    
-        var answerString = "1) " + data[0]
+
+        var answerString = "1) " + parsedAnswers[0][0]
         
-        for d in 1...data.count - 1 {
-            answerString = answerString + "\n" + String(d + 1) + ") " + data[d];
+        for answer in 1...parsedAnswers[0].count - 1 {
+            answerString = answerString + "\n" + String(answer + 1) + ") " + parsedAnswers[0][answer];
         }
         
         answers.text = answerString

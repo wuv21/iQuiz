@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //    var model = QuizContent()
     var subjects : [String] = ["Data Loading"]
     var subjectsDescriptions : [String] = ["Please wait while data is being loaded"]
+    let quizContent = QuizContent()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +25,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         subjectsTable.dataSource = self
         subjectsTable.delegate = self
         
-        let test = QuizContent()
-        
-        test.getData {
+        self.quizContent.getData {
             self.subjects.removeAll()
             self.subjectsDescriptions.removeAll()
             
-            self.subjects = test.subjects
-            self.subjectsDescriptions = test.subjectsDescriptions
+            self.subjects = self.quizContent.subjects
+            self.subjectsDescriptions = self.quizContent.subjectsDescriptions
             
             self.subjectsTable.reloadData()
         }
@@ -65,6 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         destination.index = row
         destination.subject = subjects[row]
+        destination.questionObjects = self.quizContent.questions[row] as! [AnyObject]
         
         self.presentViewController(destination, animated: true, completion: nil)
     }
