@@ -9,13 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
-    let subjectsDescriptions =  ["Covers algebra, geometry, etc.",
-                                "Explores the Marvel universe.",
-                                "Topics from biology to astronomy."]
     
     @IBOutlet var subjectsTable: UITableView!
+
+    
+    var model = QuizContent()
+    var subjects : [String] = []
+    var subjectsDescriptions : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         subjectsTable.dataSource = self
         subjectsTable.delegate = self
+        
+        model.getData()
+        
+        subjects = model.subjects
+        subjectsDescriptions = model.subjectsDescriptions
+        
+        print(model.subjects)
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let destination = storyboard.instantiateViewControllerWithIdentifier("QuestionViewController") as! QuestionViewController
         
         destination.index = row
+        destination.subject = subjects[row]
         
         self.presentViewController(destination, animated: true, completion: nil)
     }
