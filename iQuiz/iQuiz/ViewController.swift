@@ -24,12 +24,46 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         subjectsTable.dataSource = self
         subjectsTable.delegate = self
         
-        model.getData()
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://tednewardsandbox.site44.com/questions.json")!)
         
-        subjects = model.subjects
-        subjectsDescriptions = model.subjectsDescriptions
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            
+            let httpResponse = response as! NSHTTPURLResponse
+            let statusCode = httpResponse.statusCode
+            
+            if (statusCode == 200) {
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
+                    
+                    guard let category = json as? [[String:AnyObject]] else {return}
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        for c in category {
+                            guard let subject = c["title"] as? String,
+                                let desc = c["desc"] as? String,
+                                let questions = c["questions"] else {return}
+                            
+                            
+                            self.subjects.append(subject)
+                            self.subjectsDescriptions.append(desc)
+    
+                        }
+                        
+                        print(self.subjects)
+                        self.subjectsTable.reloadData()
+                    }
+                    
+                } catch {
+                    print("Error with Json: \(error)")
+                }
+                //                print(self.subjects)
+                
+            }
+        }
         
-        print(model.subjects)
+        print(self.subjects)
         
     }
     
