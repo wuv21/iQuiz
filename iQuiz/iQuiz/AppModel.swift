@@ -8,12 +8,26 @@
 
 import Foundation
 
+class Question {
+    var correctAnswer : Int
+    var text : String
+    var possibleAnswers : [String]
+    
+    init(ans: Int, txt: String, posAns: [String]) {
+        self.correctAnswer = ans
+        self.text = txt
+        self.possibleAnswers = posAns
+    }
+}
+
 class QuizContent {
     var content : Array<Dictionary<String, AnyObject>> = [];
     
     var subjects : [String] = []
     var subjectsDescriptions : [String] = []
-    var questions: [AnyObject] = []
+    var questions : [[Question]] = []
+//    var questions: [AnyObject] = []
+//    var answers: [
     
     func getData(completionHandler: () -> Void) {
         let request = NSMutableURLRequest(URL: NSURL(string: "http://tednewardsandbox.site44.com/questions.json")!)
@@ -34,12 +48,23 @@ class QuizContent {
                     for c in category {
                         guard let subject = c["title"] as? String,
                             let desc = c["desc"] as? String,
-                            let questions = c["questions"] else {return}
+                            let questions = c["questions"] as? [AnyObject] else {return}
+                        
+                        var x : [Question] = []
+                        
+                        for question in questions {
+                            guard let correctAnswerIndex = question["answer"] as? String,
+                                let answers = question["answers"] as? [String],
+                                let question = question["text"] as? String else {return}
+                        
+                            let q = Question(ans: Int(correctAnswerIndex)!, txt: question, posAns: answers)
+                            x.append(q)
+                        }
                         
                         
                         self.subjects.append(subject)
                         self.subjectsDescriptions.append(desc)
-                        self.questions.append(questions)
+                        self.questions.append(x)
                     }
                     
                     completionHandler()
@@ -47,15 +72,15 @@ class QuizContent {
                 } catch {
                     print("Error with Json: \(error)")
                 }
-//                print(self.subjects)
 
             }
-            
-            
         }
-        
 
         task.resume()
     }
-    
+}
+
+class Score {
+    var correct : Int = 0
+    var total : Int = 0
 }

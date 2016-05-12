@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         destination.index = row
         destination.subject = subjects[row]
-        destination.questionObjects = self.quizContent.questions[row] as! [AnyObject]
+        destination.questions = self.quizContent.questions[row]
         
         self.presentViewController(destination, animated: true, completion: nil)
     }
