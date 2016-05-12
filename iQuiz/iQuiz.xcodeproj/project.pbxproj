@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4919065F1CE43AB700D7D05F /* FinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4919065E1CE43AB700D7D05F /* FinishedViewController.swift */; };
+		491906611CE4431D00D7D05F /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491906601CE4431D00D7D05F /* PopoverViewController.swift */; };
 		493ED1931CDA81620068A064 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ED1921CDA81620068A064 /* AppDelegate.swift */; };
 		493ED1951CDA81620068A064 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ED1941CDA81620068A064 /* ViewController.swift */; };
 		493ED1981CDA81620068A064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493ED1961CDA81620068A064 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		4919065E1CE43AB700D7D05F /* FinishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedViewController.swift; sourceTree = "<group>"; };
+		491906601CE4431D00D7D05F /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		493ED18F1CDA81620068A064 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493ED1921CDA81620068A064 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		493ED1941CDA81620068A064 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				493ED1AC1CDAB30C0068A064 /* subject_pic.png */,
 				493ED1921CDA81620068A064 /* AppDelegate.swift */,
 				493ED1941CDA81620068A064 /* ViewController.swift */,
+				491906601CE4431D00D7D05F /* PopoverViewController.swift */,
 				9DD966F31CE12A7900E3D1DE /* QuestionViewController.swift */,
 				4919065E1CE43AB700D7D05F /* FinishedViewController.swift */,
 				493ED1961CDA81620068A064 /* Main.storyboard */,
@@ -153,6 +156,7 @@
 				493ED1931CDA81620068A064 /* AppDelegate.swift in Sources */,
 				9DD966F41CE12A7900E3D1DE /* QuestionViewController.swift in Sources */,
 				9DD966F61CE1320B00E3D1DE /* AppModel.swift in Sources */,
+				491906611CE4431D00D7D05F /* PopoverViewController.swift in Sources */,
 				4919065F1CE43AB700D7D05F /* FinishedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

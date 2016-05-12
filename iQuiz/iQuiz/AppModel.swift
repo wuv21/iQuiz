@@ -26,18 +26,18 @@ class QuizContent {
     var subjects : [String] = []
     var subjectsDescriptions : [String] = []
     var questions : [[Question]] = []
-//    var questions: [AnyObject] = []
-//    var answers: [
+    
+    var url : String = "http://tednewardsandbox.site44.com/questions.json"
     
     func getData(completionHandler: () -> Void) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://tednewardsandbox.site44.com/questions.json")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
-            let httpResponse = response as! NSHTTPURLResponse
-            let statusCode = httpResponse.statusCode
+            let httpResponse = response as? NSHTTPURLResponse
+            let statusCode = httpResponse?.statusCode
             
             if (statusCode == 200) {
                 do {

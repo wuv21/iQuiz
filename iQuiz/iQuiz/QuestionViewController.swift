@@ -20,13 +20,11 @@ class QuestionViewController: UIViewController {
         nextQuestion.enabled = true
         submitBtn.enabled = false
         
-        print(index)
-        
         if Int(answerSelection.titleForSegmentAtIndex(answerSelection.selectedSegmentIndex)!) == questions[index].correctAnswer {
             responseLabel.text = "Correct! Press next to continue."
             score.correct = score.correct + 1
         } else {
-            responseLabel.text = "Incorrect! Correct answer was \(questions[index].correctAnswer)."
+            responseLabel.text = "Incorrect! Correct answer was \(questions[index].possibleAnswers[questions[index].correctAnswer - 1])."
         }
     }
     

@@ -8,12 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet var subjectsTable: UITableView!
 
-    
-//    var model = QuizContent()
     var subjects : [String] = ["Data Loading"]
     var subjectsDescriptions : [String] = ["Please wait while data is being loaded"]
     let quizContent = QuizContent()
@@ -32,8 +30,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.subjects = self.quizContent.subjects
             self.subjectsDescriptions = self.quizContent.subjectsDescriptions
             
-            self.subjectsTable.reloadData()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.subjectsTable.reloadData()
+            }
         }
+        
+//        self.subjectsTable.reloadData()
     }
     
     
@@ -75,10 +77,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func settingsClick(sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Settings", message: "Settings go here.", preferredStyle:UIAlertControllerStyle.Alert)
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let destination = storyboard.instantiateViewControllerWithIdentifier("Popover") as! PopoverViewController
+        destination.modalPresentationStyle = .Popover
+        destination.url = quizContent.url
         
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        presentViewController(destination, animated: true, completion: nil)
+        destination.popoverPresentationController?.sourceView = view
+        destination.popoverPresentationController?.sourceRect = view.frame
     }
 
 }
